@@ -9,8 +9,6 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <pmd.core.version>6.5.0</pmd.core.version>
-        <checkstyle.version>3.0.0</checkstyle.version>
         <code.check.phase>validate</code.check.phase>
     </properties>
 
@@ -19,7 +17,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>2.4.0</version>
+            <version>4.2.0</version>
         </dependency>
 
         <dependency>
@@ -31,25 +29,37 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.8</version>
+            <version>3.8.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.11.0</version>
+            <version>3.11.1</version>
         </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>26.0-jre</version>
+            <version>27.0-jre</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
+            <version>1.18.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.11.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.11.1</version>
         </dependency>
 
     </dependencies>
@@ -85,13 +95,11 @@
                         <phase>validate</phase>
                         <goals>
                             <goal>use-latest-releases</goal>
+                            <goal>display-dependency-updates</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <excludes>
-                        <exclude>io.cucumber:*</exclude>
-                    </excludes>
                     <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
             </plugin>
@@ -99,7 +107,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.version}</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <id>checkstyle</id>
@@ -155,12 +163,12 @@
                     <dependency>
                         <groupId>net.sourceforge.pmd</groupId>
                         <artifactId>pmd-core</artifactId>
-                        <version>${pmd.core.version}</version>
+                        <version>6.9.0</version>
                     </dependency>
                     <dependency>
                         <groupId>net.sourceforge.pmd</groupId>
                         <artifactId>pmd-java</artifactId>
-                        <version>${pmd.core.version}</version>
+                        <version>6.9.0</version>
                     </dependency>
                 </dependencies>
                 <configuration>
@@ -182,17 +190,19 @@
                 <version>1.5.0</version>
                 <executions>
                     <execution>
-                        <phase>post-integration-test</phase>
+                        <phase>test</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
                             <longClasspath>true</longClasspath>
                             <arguments>
+                                <argument>-Xdebug</argument>
+                                <argument>-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=y</argument>
                                 <argument>-ea</argument>
                                 <argument>-classpath</argument>
                                 <classpath></classpath>
-                                <argument>cucumber.api.cli.Main</argument>
+                                <argument>com.dabogee.io.cucumber.runtime.RetryableRunner</argument>
                                 <argument>classpath:./</argument>
                                 <argument>--glue</argument>
                                 <argument>com.dabogee.io.cucumber.glue</argument>

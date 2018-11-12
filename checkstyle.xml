@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE module PUBLIC
-    "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
-    "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+        "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
 
 <!--
 
@@ -80,60 +80,60 @@
         <!-- Checks for Naming Conventions.                  -->
         <!-- See http://checkstyle.sf.net/config_naming.html -->
 
-    <module name="ConstantName" >
-	<property name="format" value="^[A-Z][_A-Z0-9]*(_[A-Z0-9]+)*$"/>
-	</module>
+        <module name="ConstantName" >
+            <property name="format" value="^[A-Z][_A-Z0-9]*(_[A-Z0-9]+)*$"/>
+        </module>
 
-    <module name="LocalFinalVariableName" >
-	 <property name="format" value="^[a-z][_a-zA-Z0-9]*$"/>
-	</module>
+        <module name="LocalFinalVariableName" >
+            <property name="format" value="^[a-z][_a-zA-Z0-9]*$"/>
+        </module>
 
         <module name="LocalVariableName" >
-	 <property name="format" value="^[a-z][_a-zA-Z0-9]*$"/>
-	</module>
+            <property name="format" value="^[a-z][_a-zA-Z0-9]*$"/>
+        </module>
 
         <module name="StaticVariableName" >
-	<property name="format" value="^[a-zA-Z][_a-zA-Z0-9]*$"/>
-	</module>
+            <property name="format" value="^[a-zA-Z][_a-zA-Z0-9]*$"/>
+        </module>
 
- 	<module name="ParameterName" >
-	<property name="format" value="^[a-z][_a-zA-Z0-9]*$"/>
-	</module>
+        <module name="ParameterName" >
+            <property name="format" value="^[a-z][_a-zA-Z0-9]*$"/>
+        </module>
 
 
         <module name="MemberName" >
-	<property name="format" value="^([a-z]|_NAE)[_a-zA-Z0-9]*$"/>
-	</module>
+            <property name="format" value="^([a-z]|_NAE)[_a-zA-Z0-9]*$"/>
+        </module>
 
         <module name="MethodName" >
-	<property name="format" value="^[a-z][_a-zA-Z0-9]*$"/>
-	</module>
+            <property name="format" value="^[a-z][_a-zA-Z0-9]*$"/>
+        </module>
 
         <module name="PackageName"/>
 
 
         <module name="TypeName" >
-	<property name="format" value="^[A-Z][_a-zA-Z0-9]*$"/>
-	</module>
+            <property name="format" value="^[A-Z][_a-zA-Z0-9]*$"/>
+        </module>
 
         <!-- Checks for Headers                                -->
         <!-- See http://checkstyle.sf.net/config_header.html   -->
         <!-- <module name="Header">                            -->
-            <!-- The follow property value demonstrates the ability     -->
-            <!-- to have access to ANT properties. In this case it uses -->
-            <!-- the ${basedir} property to allow Checkstyle to be run  -->
-            <!-- from any directory within a project. See property      -->
-            <!-- expansion,                                             -->
-            <!-- http://checkstyle.sf.net/config.html#properties        -->
-            <!-- <property                                              -->
-            <!--     name="headerFile"                                  -->
-            <!--     value="${basedir}/java.header"/>                   -->
+        <!-- The follow property value demonstrates the ability     -->
+        <!-- to have access to ANT properties. In this case it uses -->
+        <!-- the ${basedir} property to allow Checkstyle to be run  -->
+        <!-- from any directory within a project. See property      -->
+        <!-- expansion,                                             -->
+        <!-- http://checkstyle.sf.net/config.html#properties        -->
+        <!-- <property                                              -->
+        <!--     name="headerFile"                                  -->
+        <!--     value="${basedir}/java.header"/>                   -->
         <!-- </module> -->
 
         <!-- Checks for imports                              -->
         <!-- See http://checkstyle.sf.net/config_import.html -->
         <module name="AvoidStarImport">
-          <property name="excludes" value="java.io,java.net,java.util"/>
+            <property name="excludes" value="java.io,java.net,java.util"/>
         </module>
         <module name="IllegalImport"/> <!-- defaults to sun.* packages -->
         <module name="RedundantImport"/>
@@ -144,14 +144,14 @@
         <!-- See http://checkstyle.sf.net/config_sizes.html -->
         <module name="LineLength">
             <property name="max" value="150"/>
-    </module>
+        </module>
         <module name="MethodLength">
             <property name="tokens" value="METHOD_DEF"/>
-            <property name="max" value="45"/>
+            <property name="max" value="50"/>
             <property name="countEmpty" value="false" />
         </module>
         <!--<module name="ParameterNumber">-->
-            <!--<property name="max" value="8"/>-->
+        <!--<property name="max" value="8"/>-->
         <!--</module>-->
 
 
@@ -162,7 +162,7 @@
         <module name="NoWhitespaceAfter"/>
         <module name="NoWhitespaceBefore"/>
         <module name="OperatorWrap">
-          <property name="option" value="eol"/>
+            <property name="option" value="eol"/>
         </module>
         <module name="ParenPad"/>
         <module name="TypecastParenPad"/>
@@ -188,13 +188,13 @@
         <!-- See http://checkstyle.sf.net/config_blocks.html -->
         <module name="AvoidNestedBlocks"/>
         <module name="EmptyBlock">
-           <property name="option" value="text"/>
-  	    </module>
+            <property name="option" value="text"/>
+        </module>
 
         <module name="LeftCurly"/>
         <module name="NeedBraces"/>
         <module name="RightCurly">
-          <property name="option" value="alone"/>
+            <property name="option" value="alone"/>
         </module>
 
 
@@ -203,7 +203,7 @@
         <module name="EmptyStatement"/>
         <module name="EqualsHashCode"/>
         <module name="HiddenField">
-          <property name="tokens" value="VARIABLE_DEF"/>
+            <property name="tokens" value="VARIABLE_DEF"/>
         </module>
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
@@ -218,9 +218,9 @@
         <!-- Checks for class design                         -->
         <!-- See http://checkstyle.sf.net/config_design.html -->
         <module name="FinalClass"/>
-<!--
-        <module name="InterfaceIsType"/>
--->
+        <!--
+                <module name="InterfaceIsType"/>
+        -->
 
         <!-- Miscellaneous other checks.                   -->
         <!-- See http://checkstyle.sf.net/config_misc.html -->
@@ -231,7 +231,7 @@
             <property name="message" value="Line has trailing spaces."/>
         </module>
         <!--<module name="TodoComment">-->
-          <!--<property name="format" value="FIXME|TODO"/>-->
+        <!--<property name="format" value="FIXME|TODO"/>-->
         <!--</module>-->
         <module name="UpperEll"/>
 
@@ -241,8 +241,8 @@
         </module>
 
         <module name="JavaNCSS">
-			<property name="methodMaximum" value="100"/>
-		</module>
+            <property name="methodMaximum" value="100"/>
+        </module>
         <module name="DefaultComesLast"/>
         <module name="DeclarationOrder"/>
         <module name="Indentation"/>

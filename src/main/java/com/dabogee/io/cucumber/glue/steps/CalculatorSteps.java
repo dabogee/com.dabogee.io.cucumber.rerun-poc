@@ -18,7 +18,7 @@ public class CalculatorSteps {
         mathOps.add(new ElementaryOperation(op, value));
     }
 
-    @Given("Result is \"(\\d+.\\d+)\"")
+    @Given("^Result is \"(\\d+.\\d+)\"$")
     public void executeOperation(Double expected) {
         Double actual = .0;
         for (ElementaryOperation o : mathOps) {
