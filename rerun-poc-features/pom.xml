@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.dabogee.io.cucumber.rerun-poc</groupId>
+    <artifactId>rerun-poc-features</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <!--<parent>-->
+    <!--<artifactId>rerun-poc-parent</artifactId>-->
+    <!--</parent>-->
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.dabogee.io.cucumber.rerun-poc</groupId>
+            <artifactId>rerun-poc-core</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--running cucumber BDD tests-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.5.0</version>
+                <configuration>
+                    <classpathScope>test</classpathScope>
+                    <executable>java</executable>
+                    <successCodes>
+                        <successCode>2</successCode>
+                        <successCode>1</successCode>
+                        <successCode>0</successCode>
+                    </successCodes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <longClasspath>true</longClasspath>
+                            <arguments>
+                                <!--<argument>-Xdebug</argument>-->
+                                <!--<argument>-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=y</argument>-->
+                                <argument>-ea</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>com.dabogee.io.cucumber.runtime.RetryableRunner</argument>
+                                <argument>classpath:features</argument>
+                                <argument>--retries:5</argument>
+                                <argument>--glue</argument>
+                                <argument>com.dabogee.io.cucumber.glue</argument>
+                                <argument>--plugin</argument>
+                                <argument>pretty</argument>
+                                <argument>--plugin</argument>
+                                <argument>json:${project.build.directory}/cucumber.json</argument>
+                                <argument>--plugin</argument>
+                                <argument>rerun:${project.build.directory}/rerun.txt</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--<plugin>-->
+            <!--<groupId>net.masterthought</groupId>-->
+            <!--<artifactId>maven-cucumber-reporting</artifactId>-->
+            <!--<version>3.16.0</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>execution</id>-->
+            <!--<phase>post-integration-test</phase>-->
+            <!--<goals>-->
+            <!--<goal>generate</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<outputDirectory>${project.build.directory}</outputDirectory>-->
+            <!--<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>-->
+            <!--<parallelTesting>false</parallelTesting>-->
+            <!--<checkBuildResult>true</checkBuildResult>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+    <profiles>
+
+        <profile>
+            <id>cicd</id>
+            <properties>
+                <code.check.phase>none</code.check.phase>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>
